@@ -52,3 +52,12 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+*.qmlls.ini
+
+# Ignore build directories in subdirectories
+*/build/
+*/*/build/
+
+# Ignore DS_Store files on macOS
+.DS_Store
