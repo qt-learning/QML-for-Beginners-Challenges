@@ -62,9 +62,13 @@ Explore data presentation and manipulation using Qt's Model-View-Delegate archit
 
 Apply best practices and design patterns to create maintainable, efficient QML applications.
 
+#### QML Fluid Elements and Animations Challenge (coming soon)
+
+Explore fluid UI design and animations by using states, transitions, and animations in QML.
+
 #### QML Debugging Basics with Qt Creator Challenge (coming soon)
 
-Leaen the core tools and debugging techniques in Qt Creator to efficiently identify and resolve issues in QML applications.
+Learn the core tools and debugging techniques in Qt Creator to efficiently identify and resolve issues in QML applications.
 
 ## Getting Started
 
