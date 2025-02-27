@@ -79,8 +79,8 @@ These challenges are designed to complement the QML for Beginners Learning Path 
 4. **Switch to the challenge branch** you want to work on:
 
    ```
-   git clone https://github.com/qt-academy/qml-for-beginners-challenges.git
-   git checkout intro-to-qml-challenge
+   git clone https://github.com/qt-learning/QML-for-Beginners-Challenges.git
+   git checkout Intro-to-QML
    ```
 
 5. **Read the README.md** in that branch for detailed instructions.
