@@ -1,1 +1,1 @@
-# QML-for-Beginners-Challenges
+# Introduction to QML Challenge
