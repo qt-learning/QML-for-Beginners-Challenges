@@ -34,15 +34,15 @@ To try a challenge, simply check out the corresponding branch and follow the ins
 
 ### Available Challenges
 
-#### [Introduction to QML Challenge](../../tree/intro-to-qml-challenge)
+#### [Introduction to QML Challenge](../../tree/Intro-to-QML)
 
 Create a business card application that displays contact information with an interactive layout that toggles between basic and detailed views. This challenge focuses on fundamental QML concepts including anchors, property bindings, and signal handling.
 
-#### [Introduction to Qt Quick Challenge](../../tree/intro-to-qt-quick-challenge)
+#### [Introduction to Qt Quick Challenge](../../tree/Intro-Qt-Quick)
 
 Design and implement a TV remote control application with various interactive buttons and visual feedback. This challenge explores more advanced Qt Quick elements, image resources, custom fonts, and complex UI interactions.
 
-#### [Introduction to Qt Quick Controls Challenge](../../tree/intro-to-qt-quick-controls-challenge)
+#### [Introduction to Qt Quick Controls Challenge](../../tree/Intro-Qt-Quick-Controls)
 
 Build a restaurant menu ordering application using Qt Quick Controls to create a responsive, interactive UI. This challenge demonstrates the use of ApplicationWindow, Pages, and various controls while implementing property bindings for dynamic calculations.
 
@@ -68,25 +68,28 @@ Leaen the core tools and debugging techniques in Qt Creator to efficiently ident
 
 ## Getting Started
 
-To begin working with these challenges:
+These challenges are designed to complement the QML for Beginners Learning Path on Qt Academy. For the best learning experience:
 
-1. Clone this repository:
+1. **Follow the Learning Path**: Enrol to the [QML for Beginners Learning Path](https://www.qt.io/academy/course-catalog#qml-for-beginners) on Qt Academy.
+
+2. **Complete each course**: Work through each course in the learning path to build your QML knowledge step by step.
+
+3. **Take the challenge**: After completing a course, enroll in the corresponding challenge on Qt Academy. Watch the challenge video, review the requirements, and then come to this repository and attempt the corresponding challenge to apply what you've learned.
+
+4. **Switch to the challenge branch** you want to work on:
 
    ```
-   git clone https://github.com/qt-academy/coding-challenges.git
+   git clone https://github.com/qt-academy/qml-for-beginners-challenges.git
+   git checkout intro-to-qml-challenge
    ```
 
-2. Switch to the challenge branch you want to work on:
+5. **Read the README.md** in that branch for detailed instructions.
 
-   ```
-   git checkout Intro-to-QML
-   ```
+6. **Open the StartingProject** in Qt Creator and begin working on the challenge.
 
-3. Read the README.md in that branch for detailed instructions.
+7. **Reference the solution if needed**: If you get stuck, refer to the SolutionProject for guidance, but try to solve the challenge on your own first!
 
-4. Open the StartingProject in Qt Creator and begin working on the challenge.
-
-5. If you get stuck, refer to the SolutionProject for guidance, but try to solve the challenge on your own first!
+This approach of learning concepts and then immediately applying them through challenges will help cement your understanding and build practical skills.
 
 ## Prerequisites
 
@@ -94,7 +97,7 @@ To complete these challenges, you should:
 
 - Have Qt and Qt Creator installed on your system
 - Complete the corresponding Qt Academy course for each challenge
-- Have basic familiarity with the concepts covered in those courses
+- Have basic familiarity with the concepts covered in those courses which you can gain by completing the corresponding course on Qt Academy
 
 ## Share Your Work
 
