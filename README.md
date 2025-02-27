@@ -61,7 +61,7 @@ While there are many ways to meet the requirements of this challenge, a sample s
 - Using **property bindings** to ensure responsive design
 - Setting appropriate **font properties** to emphasize important information
 
-The solution code is thoroughly commented to help you understand the approach and techniques used.
+The solution code is thoroughly commented to help you understand the approach and techniques used. The solution only demonstrates the basic solution and not the stretch goals
 
 ## Useful Resources
 
