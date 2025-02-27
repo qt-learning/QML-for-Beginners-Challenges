@@ -1,1 +1,1 @@
-# QML-for-Beginners-Challenges
+# Introduction to Qt Quick Challenge
