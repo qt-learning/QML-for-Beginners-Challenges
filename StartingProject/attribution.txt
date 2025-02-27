@@ -1,0 +1,12 @@
+Icons provided from the Google Material Icons Library
+
+https://fonts.google.com/icons
+
+Fill: false
+Weight:	700
+Grade:	100
+Optical Size: 48
+Size: 64
+Color: #FFFFF / #00000
+
+Fonts provided by Google Fonts
