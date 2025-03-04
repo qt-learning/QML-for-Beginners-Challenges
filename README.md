@@ -99,7 +99,7 @@ This approach of learning concepts and then immediately applying them through ch
 
 To complete these challenges, you should:
 
-- Have Qt and Qt Creator installed on your system
+- Have Qt and Qt Creator installed on your system (All challenge templates and solutions in this series have been built and tested using **Qt 6.8.1**)
 - Complete the corresponding Qt Academy course for each challenge
 - Have basic familiarity with the concepts covered in those courses which you can gain by completing the corresponding course on Qt Academy
 
