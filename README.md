@@ -1,90 +1,114 @@
-# Introduction to Qt Quick Controls Challenge
+# Positioners and Layouts Challenge
 
-Welcome to the **Introduction to Qt Quick Controls Challenge**! This challenge is designed to help you apply and test the skills you've gained from completing the Introduction to Qt Quick Controls course. By working through this practical exercise, you'll solidify your understanding of **Qt Quick Controls** and gain confidence in your ability to create rich interactive applications.
+Welcome to the **Positioners and Layouts Challenge**! This challenge is designed to help you apply and test the skills you've gained from completing the Positioners and Layouts course. By working through this practical exercise, you'll solidify your understanding of **Qt Quick Layout techniques** and gain confidence in creating responsive UI designs.
 
 ## Introduction
 
+The Positioners and Layouts course introduced powerful layout techniques using Qt Quick Positioner components like [Row](https://doc.qt.io/qt-6/qml-qtquick-row.html) and [Column](https://doc.qt.io/qt-6/qml-qtquick-column.html), and their counterparts [RowLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-rowlayout.html) and [ColumnLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-columnlayout.html) among others. While the course provided the building blocks to arrange content, it also gave a preview of building responsive and adaptive layouts. This challenge allows you to explore that further and test what you have learned by choosing the best approach to create such a layout.
+
 Learning from a course provides you with information, but exercising that knowledge through practical application leads to a richer understanding. This challenge will give you the opportunity to:
 
-- Demonstrate your foundational **Qt Quick Controls knowledge**
-- Apply what you've learned in a practical context
-- Gain confidence in your Qt Quick Controls skills
+- Demonstrate your understanding of **Qt Quick Layouts**
+- Apply responsive design principles to a real-world application
+- Create flexible, maintainable UI structures that adapt to changing conditions
 
-Upon completion, you'll feel comfortable progressing to other courses at Qt Academy that will prepare you for your onward Qt journey.
+Upon completion, you'll feel comfortable applying these layout techniques in your own projects.
 
 ## Challenge Brief
 
-In this challenge, you'll design and create a simple **restaurant menu ordering application** that uses a variety of Qt Quick Controls to implement the UI. Your menu should advertise different items that can be ordered with their prices. You'll include a way to select the quantity of each item and show the calculated order total. The application will also include a button which causes a message to display showing the order is being processed and when it is complete.
+In this challenge, you'll design and build the basic elements of a **chat application** - focusing on making the design **responsive** rather than making it actually functional.
 
-The aim of this challenge is to use and become familiar with as many of the Qt Quick Controls as you wish, looking particularly at [ApplicationWindow](https://doc.qt.io/qt-6/qml-qtquick-controls2-applicationwindow.html), [Page](https://doc.qt.io/qt-6/qml-qtquick-controls2-page.html), and [Pane](https://doc.qt.io/qt-6/qml-qtquick-controls2-pane.html) as great ways to group and organize visual content.
+Being responsive simply means that Items re-position and resize appropriately as their parent items or window change position and size, but the overall layout structure stays the same. It's similar to considering Items as being somewhat "elastic."
+
+The aim of the challenge is to become more familiar with planning your visual layout using Qt Quick Positioners and Layouts by defining one responsive layout for a desktop display. You'll quickly discover that by using Qt Quick Layouts you can create very flexible layouts easily!
 
 ## Requirements
 
-Your menu ordering application should contain the following:
+Your chat application should include the following:
 
-- A variety of **Controls** from the [Qt Quick Controls](https://doc.qt.io/qt-6/qtquickcontrols-index.html) module such as [Page](https://doc.qt.io/qt-6/qml-qtquick-controls2-page.html), [Pane](https://doc.qt.io/qt-6/qml-qtquick-controls2-pane.html), [Button](https://doc.qt.io/qt-6/qml-qtquick-controls2-button.html), [Slider](https://doc.qt.io/qt-6/qml-qtquick-controls2-slider.html), [RadioButton](https://doc.qt.io/qt-6/qml-qtquick-controls2-radiobutton.html), or [Dial](https://doc.qt.io/qt-6/qml-qtquick-controls2-dial.html)
-- An **ApplicationWindow** that has a suitably appetising-looking background
-- A **restaurant name** that you can put in the ApplicationWindow title and header
-- A **cuisine-themed font** to use across your whole design
-- Change the ApplicationWindow **palette** to customize the colors of your Controls
-- Organize your menu into visual **Pages** with titles for Starters, Mains, and Desserts, listing menu items, showing a price and a quantity selection
-- The **total cost** of the selected items should be shown in the ApplicationWindow footer
-- Consider how your design could be made from **re-usable components** as QML Files
-- Add a **Button** for "submitting" the order and show a visual status that the order is busy being processed, and then completed. A [Timer](https://doc.qt.io/qt-6/qml-qtqml-timer.html) can be used to simulate this
-- If using anchors to arrange your design becomes complex, try using [RowLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-rowlayout.html) and [ColumnLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-columnlayout.html) from the Qt Quick Layouts module
-
-## Stretch Goals
-
-Once you've completed the basic challenge, you can extend your skills with these additional goals:
-
-- Use [TabBar](https://doc.qt.io/qt-6/qml-qtquick-controls2-tabbar.html), [TabButton](https://doc.qt.io/qt-6/qml-qtquick-controls2-tabbutton.html), and [StackLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-stacklayout.html) to separate meal courses into tabs and add a [PageIndicator](https://doc.qt.io/qt-6/qml-qtquick-controls2-pageindicator.html)
-- Investigate the effect of using Control's **padding** and **inset** properties
-- Ensure that your design is **responsive** to window size changes
-- Replace the fake Popups with Qt Quick Controls [Dialog](https://doc.qt.io/qt-6/qml-qtquick-controls2-dialog.html) and commonize the design
-- Use Qt Quick [Positioner](https://doc.qt.io/qt-6/qtquick-positioning-layouts.html) and [Layouts](https://doc.qt.io/qt-6/qtquicklayouts-index.html) components to see how they help with otherwise complex anchoring
-- Create a **Dark mode Palette** and a way to switch between light and dark Palettes. Hint: You can use the `Application.styleHints.colorScheme` which changes automatically with your system mode. You should also try using the provided dark mode images and incorporating them into the code using a dynamic image URL
+- Use [Qt Quick Layouts](https://doc.qt.io/qt-6/qtquicklayouts-index.html) to design a suitable **Desktop Layout** for your application
+- Use the **Layout attached properties** such as:
+  - `Layout.fillWidth` and `Layout.fillHeight`
+  - `Layout.preferredWidth` and `Layout.preferredHeight`
+  - `Layout.alignment` and `Layout.margins` to customize the layouts
+- Create sections in your application showing:
+  - The **name of the person** who you are chatting with
+  - A **two-way conversation** using "chat bubbles" (this can be static content for now)
+  - A **text input** for writing a potential reply
+  - A **send button**
+- The **chat bubbles** should:
+  - Contain some text
+  - Be positioned on the left or right depending on whose chat bubble it is (similar to popular messaging apps)
+  - Have alternating colors to distinguish between participants
 
 ## Overview of Starting Project
 
-To help you focus on being creative in your problem-solving, we've prepared a basic project template for you. This template contains all the necessary project setup to get you started. You can find it in the [StartingProject](./StartingProject/) folder in this repository.
+To help you focus on being creative in your problem-solving, we've prepared a basic project template for you. This template contains the necessary project setup to get you started. You can find it in the [StartingProject](./StartingProject/) folder in this repository.
 
 The starting project includes:
 
 - A **CMakeLists.txt** file with a ready main.cpp and Main.qml file
-- A simple **Qt Quick Controls ApplicationWindow** with some initial properties to get you going
+- A simple **Qt Quick Controls ApplicationWindow** with some initial properties
 
-The starting project doesn't come with any images or fonts, but you are free to add your own as needed for your design. Remember to add any resources you use to the RESOURCES property in the QT_add_qml_module() function in your CMakeLists.txt file.
+The starting project doesn't come with any other resources such as images or fonts, but you are free to add your own as desired for your design. Remember to add any resources you use to the RESOURCES property in the QT_add_qml_module() function in your CMakeLists.txt file.
 
 ## Overview of Solution
 
-While there are many ways to meet the requirements of this challenge, a sample solution is provided in the [SolutionProject](./SolutionProject/) folder. This solution demonstrates:
+A sample solution is provided in the [SolutionProject](./SolutionProject/) folder that demonstrates one approach to meeting the challenge requirements. This solution shows:
 
-- Using **ApplicationWindow** with background, header, and footer components to organize the layout
-- Setting a **custom font** and **palette** application-wide
-- Creating **re-usable QML components** for menu sections and labels
-- Using **property bindings** to calculate order totals automatically
-- Implementing **interactive elements** like SpinBox, RadioButton, Dial, and Slider
-- Using **Timer** to control the order processing workflow
-- Organizing content with [RowLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-rowlayout.html) and [ColumnLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-columnlayout.html) to simplify positioning
+- A **three-column layout** using RowLayout:
+  - Left column: List of chat contacts
+  - Middle column: Current chat header and reply area
+  - Right column: Chat conversation with alternating chat bubbles
+- **Responsive behavior** where:
+  - The left and middle columns maintain fixed widths
+  - The right column (chat area) expands and contracts with window resizing
+  - Chat bubbles reflow text and adjust their size as the available space changes
+  - The send button stays at the bottom while the reply area expands vertically with the window
+- **Custom components** including:
+  - ChatList: A list of buttons to select different conversations
+  - ChatHeader: Shows the name of the current chat partner
+  - ChatFooter: Contains the reply text area and send button
+  - ChatFlickable: A scrollable area containing the chat bubbles
+  - ChatBubble: Individual message bubbles that position themselves left or right
 
-The key components of the solution include:
+Key techniques demonstrated include:
 
-- **MenuLabel**: A component combining a Label and SpinBox to show item name, price, and quantity selection
-- **MenuSection**: A Page containing multiple MenuLabels organized in a ColumnLayout
-- **Order processing UI**: Simple Panes that appear over the main UI, controlled by a Timer
+- **Nested layouts** (RowLayouts inside ColumnLayouts and vice versa)
+- Proper use of **Layout attached properties** to control sizing behavior
+- Using **Flickable** for scrolling content that exceeds the available space
+- **Responsive text wrapping** in chat bubbles
+- Dynamic UI updates based on user interaction
 
 The solution code is thoroughly commented to help you understand the approach and techniques used. The solution only demonstrates the basic solution and not the stretch goals.
 
+## Stretch Goals
+
+Once you've completed the basic responsive layout challenge, you can extend your skills by making the layout **adaptive** rather than just responsive. While responsive layouts consider the elastic nature of items, adaptive layouts offer complete layout changes at run-time to optimize the content for different screen sizes or devices.
+
+For this extension challenge:
+
+- Make your application have separate **desktop and mobile layouts** that can switch between the two as the window size changes
+- Use [LayoutItemProxy](https://doc.qt.io/qt-6/qml-qtquick-layouts-layoutitemproxy.html) to achieve this (as introduced in the final part of the Positioners and Layouts course)
+- Consider the following approach:
+  - Move items in the top-level layout outside of the layout (as children of the window)
+  - Add LayoutItemProxy items targeting them in their place
+  - Provide the desired Layout attached properties on the LayoutItemProxy items, not on the actual items
+  - Create a new layout design for the "mobile" view
+  - Add window width break points to determine when to switch between layouts
+  - Consider using a [StackLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-stacklayout.html) with a [TabBar](https://doc.qt.io/qt-6/qml-qtquick-controls2-tabbar.html) and [TabButton](https://doc.qt.io/qt-6/qml-qtquick-controls2-tabbutton.html) to show different chat conversations in the mobile layout
+  - Think about how the layout might need to change if the dimensions were portrait vs landscape
+
 ## Useful Resources
 
-- [Qt Documentation](https://doc.qt.io)
+- [Qt Quick Layouts Overview](https://doc.qt.io/qt-6/qtquicklayouts-index.html)
+- [RowLayout Documentation](https://doc.qt.io/qt-6/qml-qtquick-layouts-rowlayout.html)
+- [ColumnLayout Documentation](https://doc.qt.io/qt-6/qml-qtquick-layouts-columnlayout.html)
+- [Layout Attached Properties](https://doc.qt.io/qt-6/qml-qtquick-layouts-layout.html)
+- [LayoutItemProxy Documentation](https://doc.qt.io/qt-6/qml-qtquick-layouts-layoutitemproxy.html)
+- [Flickable Documentation](https://doc.qt.io/qt-6/qml-qtquick-flickable.html)
 - [Qt Quick Controls Documentation](https://doc.qt.io/qt-6/qtquickcontrols-index.html)
-- [ApplicationWindow Documentation](https://doc.qt.io/qt-6/qml-qtquick-controls2-applicationwindow.html)
-- [Page Documentation](https://doc.qt.io/qt-6/qml-qtquick-controls2-page.html)
-- [Styling Qt Quick Controls](https://doc.qt.io/qt-6/qtquickcontrols2-styles.html)
-- [Qt Quick Layouts Documentation](https://doc.qt.io/qt-6/qtquicklayouts-index.html)
-- [Qt Quick Controls Examples](https://doc.qt.io/qt-6/qtquickcontrols-examples.html)
-- [Customizing Qt Quick Controls](https://doc.qt.io/qt-6/qtquickcontrols2-customize.html)
+- [Repeater Documentation](https://doc.qt.io/qt-6/qml-qtquick-repeater.html)
 - [Qt Quick Examples](https://doc.qt.io/qt-6/qtquick-codesamples.html)
 - [Qt Academy](https://qt.io/academy)
 - [Qt Forum](https://forum.qt.io)
@@ -93,7 +117,7 @@ The solution code is thoroughly commented to help you understand the approach an
 
 ### Continue Learning
 
-After completing this challenge, we encourage you to continue your learning journey with more courses at [Qt Academy](https://qt.io/academy). The skills you've developed here will provide a solid foundation for exploring more advanced topics in Qt and QML development, including Qt Quick Layouts which was briefly introduced in this challenge.
+After completing this challenge, we encourage you to continue your learning journey with more courses at Qt Academy. The skills you've developed here in creating responsive and adaptive layouts will provide a solid foundation for building more complex applications that can adapt to different screen sizes and orientations.
 
 ### Share Your Work
 
@@ -101,9 +125,10 @@ We strongly encourage you to **share your project** with the Qt community! Posti
 
 To share your project:
 
-- Post in the [Qt Forum's Qt Quick Controls challenge thread](https://forum.qt.io/category/73/qt-courses)
-- Include **screenshots** of your restaurant menu application
-- Consider creating a short **video demonstration** showing the interactive elements
+- Post in the [Qt Forum's Positioners and Layouts challenge thread](https://forum.qt.io/category/73/qt-courses)
+- Include **screenshots** of your chat application at different window sizes to demonstrate responsiveness
+- If you completed the stretch goal, include screenshots showing the adaptive layout
+- Consider creating a short **video demonstration** showing how your layout responds to size changes
 - Share a **link to your repository** so others can see your implementation
 - Describe any challenges you faced and how you overcame them
 - Mention which stretch goals you tackled and how you approached them
