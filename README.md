@@ -1,117 +1,136 @@
-# QML for Beginners Coding Challenges
+# Model View Delegate Challenge
 
-Welcome to the QML for Beginners Coding Challenges repository! This collection of hands-on projects is designed to help you apply and solidify the knowledge gained from introductory QML courses at Qt Academy. Each challenge provides an opportunity to practice fundamental QML skills and concepts in a practical, engaging way.
+Welcome to the **Model View Delegate Challenge**! This challenge is designed to help you apply and test the skills you've gained from completing the Model View Delegate course. By working through this practical exercise, you'll solidify your understanding of the **Model-View-Delegate pattern** in QML and gain confidence in creating dynamic, data-driven interfaces.
 
 ## Introduction
 
-Learning programming concepts is most effective when theory is combined with practice. These challenges serve as a bridge between learning and application, allowing you to:
+In the Model View Delegate course, you were introduced to the three main Qt building blocks:
 
-- Reinforce your understanding of Qt and QML concepts
-- Build confidence in applying what you've learned
-- Develop problem-solving skills within the Qt framework
-- Create functional applications that demonstrate your capabilities
+- **Models**: Data sources that provide information to views
+- **Views**: Components that display data from models
+- **Delegates**: Templates that define how each data item should be presented
 
-Each challenge includes:
+This challenge will help you explore these concepts further by creating a practical application that leverages the Model-View-Delegate pattern to create a visually appealing and efficient user interface.
 
-- A starting project template with necessary resources
-- Detailed requirements and guidance
-- Optional stretch goals for additional learning
-- A solution project demonstrating one possible implementation
+## Challenge Brief
 
-## Repository Structure
+In this challenge, you'll create a simple but visually appealing **graphic equalizer display**. This display will provide a visual representation of the mocked levels of an audio source as measured across different frequencies. The number of frequency measurements will determine the graph's visual resolution.
 
-This repository is organized with a branch for each challenge:
+Your graphic equalizer display should show moving levels (based on a Timer and randomly generated values - no need to analyze real audio). Think of a Hi-Fi display that might show horizontally arranged bars for each frequency band, with each bar containing individual LED elements that turn on and off according to the level of the frequency band.
 
-- The **main** branch (this one) contains an overview of all challenges
-- Each **challenge branch** contains:
-  - A detailed README with challenge requirements
-  - A `StartingProject` folder with template code
-  - A `SolutionProject` folder with a sample implementation
+## Requirements
 
-To try a challenge, simply check out the corresponding branch and follow the instructions in its README.
+The requirements for this challenge can be broken down into three main components:
 
-## Challenges Overview
+1. **LED Element**:
 
-### Available Challenges
+   - Design a small, LED-style element to serve as the individual visual unit within an LED bar
+   - Each LED should have a customizable **threshold** at which it turns on and off
+   - The LED's **color** could change as the level increases
+   - Keep it simple as hundreds of these elements may be created in the final display
 
-#### [Introduction to QML Challenge](../../tree/Intro-to-QML)
+2. **LED Bar**:
 
-Create a business card application that displays contact information with an interactive layout that toggles between basic and detailed views. This challenge focuses on fundamental QML concepts including anchors, property bindings, and signal handling.
+   - Create a container for multiple LED elements
+   - Determine its **orientation** (either vertical or horizontal)
+   - Choose the desired **number of LEDs** it will contain
+   - Arrange the LEDs to fill the bar, with each bar representing the level for a single frequency band
+   - The LED bar's overall **level** should dictate the behavior of individual LEDs
+   - Use an **integer model** for the number of LEDs, a **delegate** (a single LED), and a **View or Repeater** with a Layout to generate and arrange the delegates
 
-#### [Introduction to Qt Quick Challenge](../../tree/Intro-Qt-Quick)
+3. **Graphic Equalizer Display**:
+   - Define a **model** that generates random volume level data at each index at a given Timer interval
+   - This model will store the volume level data for each frequency band
+   - Select an appropriate **View** to create LED Bar delegates
+   - Ensure each delegate reads its corresponding frequency band's volume level from the model
+   - Arrange the LED bars within the View to fill the window
+   - **Tip**: Maintain all level values and thresholds normalized (between 0 and 1) to simplify bindings
 
-Design and implement a TV remote control application with various interactive buttons and visual feedback. This challenge explores more advanced Qt Quick elements, image resources, custom fonts, and complex UI interactions.
+## Overview of Starting Project
 
-#### [Introduction to Qt Quick Controls Challenge](../../tree/Intro-Qt-Quick-Controls)
+To help you focus on being creative in your problem-solving, we've prepared a basic project template for you. This template contains the necessary project setup to get you started. You can find it in the [StartingProject](./StartingProject/) folder in this repository.
 
-Build a restaurant menu ordering application using Qt Quick Controls to create a responsive, interactive UI. This challenge demonstrates the use of ApplicationWindow, Pages, and various controls while implementing property bindings for dynamic calculations.
+The starting project includes:
 
-### Coming Soon
+- A **CMakeLists.txt** file with a ready main.cpp and Main.qml file
+- A simple **Qt Quick Window** with some initial properties
 
-More challenges will be released in the future to cover the remaining Qt Academy courses in the QML for Beginners Learning Path.
+The starting project doesn't come with any additional resources, but you should be able to achieve impressive results just using Qt Quick Rectangles in this challenge. You're free to add your own resources if desired for your design.
 
-#### Positioners and Layouts Challenge (coming soon)
+## Overview of Solution
 
-Learn to effectively arrange UI elements using Qt's powerful positioning and layout systems.
+A sample solution is provided in the [SolutionProject](./SolutionProject/) folder that demonstrates one approach to meeting the challenge requirements. This solution shows:
 
-#### Model View Delegate with QML Challenge (coming soon)
+- A hierarchical structure of components that build upon each other:
 
-Explore data presentation and manipulation using Qt's Model-View-Delegate architecture in QML.
+  - **LED.qml**: A simple Rectangle with properties for threshold and volumeLevel
+  - **LEDBar.qml**: A ColumnLayout that uses a Repeater to create multiple LEDs
+  - **LEDMeter.qml**: A horizontal ListView that arranges multiple LEDBars
+  - **Main.qml**: Sets up the LEDMeter with the FrequencyBandModel
 
-#### QML Best Practice Challenge (coming soon)
+- Key techniques demonstrated include:
+  - Using **required properties** to pass data from models to delegates
+  - Creating nested views where one delegate becomes the view for another set of delegates
+  - Using **opacity animations** to create smooth transitions when LEDs turn on and off
+  - Leveraging **Layout attached properties** to make components resize responsively
+  - Using **color functions** (Qt.hsla) to create color gradients based on thresholds
+  - Creating a dynamic model (**FrequencyBandModel**) that updates volume levels at timed intervals
 
-Apply best practices and design patterns to create maintainable, efficient QML applications.
+The solution demonstrates how the Model-View-Delegate pattern, though initially challenging, leads to significant code reduction and well-structured, maintainable code.
 
-#### QML Fluid Elements and Animations Challenge (coming soon)
+The solution code is thoroughly commented to help you understand the approach and techniques used. The solution only demonstrates the basic solution and not the stretch goals.
 
-Explore fluid UI design and animations by using states, transitions, and animations in QML.
+## Stretch Goals
 
-#### QML Debugging Basics with Qt Creator Challenge (coming soon)
+Once you've completed the basic challenge, you can extend your skills with these additional goals:
 
-Learn the core tools and debugging techniques in Qt Creator to efficiently identify and resolve issues in QML applications.
+- Add a **peak indicator** that stays at the highest volume level in each frequency band
+- Add a control such as a [Slider](https://doc.qt.io/qt-6/qml-qtquick-controls2-slider.html) to modify:
+  - The quantity of LEDs per bar
+  - The quantity of frequency bands
+- Use a [ComboBox](https://doc.qt.io/qt-6/qml-qtquick-controls2-combobox.html) to change the update interval:
+  - The ComboBox should use an appropriate [ListModel](https://doc.qt.io/qt-6/qml-qtqml-models-listmodel.html) or **JSON model**
+  - Provide names for different intervals (e.g., Slow, Medium, Fast) and their corresponding values in milliseconds
+  - Tip: Use the ComboBox's textRole, valueRole, and currentValue properties
+- Display a vertical line moving over the frequency bands to indicate the average level across all bands
+- Create your own style of bar by customizing the LED component or creating a completely new graphic equalizer display concept
+- Experiment with visual effects:
+  - Use [ShaderEffectSource](https://doc.qt.io/qt-6/qml-qtquick-shadereffectsource.html) to create an inverted mirror effect
+  - Add [Particles](https://doc.qt.io/qt-6/qtquick-effects-particles.html) for sparkle effects
+  - Apply [MultiEffect](https://doc.qt.io/qt-6/qml-qtquick-effects-multieffect.html) for shader-based fill and shadow effects
 
-## Getting Started
+## Useful Resources
 
-These challenges are designed to complement the QML for Beginners Learning Path on Qt Academy. For the best learning experience:
-
-1. **Follow the Learning Path**: Enrol to the [QML for Beginners Learning Path](https://www.qt.io/academy/course-catalog#qml-for-beginners) on Qt Academy.
-
-2. **Complete each course**: Work through each course in the learning path to build your QML knowledge step by step.
-
-3. **Take the challenge**: After completing a course, enroll in the corresponding challenge on Qt Academy. Watch the challenge video, review the requirements, and then come to this repository and attempt the corresponding challenge to apply what you've learned.
-
-4. **Switch to the challenge branch** you want to work on:
-
-   ```
-   git clone https://github.com/qt-learning/QML-for-Beginners-Challenges.git
-   git checkout Intro-to-QML
-   ```
-
-5. **Read the README.md** in that branch for detailed instructions.
-
-6. **Open the StartingProject** in Qt Creator and begin working on the challenge.
-
-7. **Reference the solution if needed**: If you get stuck, refer to the SolutionProject for guidance, but try to solve the challenge on your own first!
-
-This approach of learning concepts and then immediately applying them through challenges will help cement your understanding and build practical skills.
-
-## Prerequisites
-
-To complete these challenges, you should:
-
-- Have Qt and Qt Creator installed on your system (All challenge templates and solutions in this series have been built and tested using **Qt 6.8.1**)
-- Complete the corresponding Qt Academy course for each challenge
-- Have basic familiarity with the concepts covered in those courses which you can gain by completing the corresponding course on Qt Academy
-
-## Share Your Work
-
-We encourage you to share your completed challenges with the Qt community! Post your projects in the [Qt Forum's QML for Beginners section](https://forum.qt.io/category/73/qt-courses) to receive feedback, showcase your work, and inspire other beginners.
-
-## Additional Resources
-
-- [Qt Documentation](https://doc.qt.io)
+- [Qt Quick Models](https://doc.qt.io/qt-6/qtquick-modelviewsdata-modelview.html)
+- [ListView Documentation](https://doc.qt.io/qt-6/qml-qtquick-listview.html)
+- [Repeater Documentation](https://doc.qt.io/qt-6/qml-qtquick-repeater.html)
+- [Required Properties](https://doc.qt.io/qt-6/qtqml-syntax-objectattributes.html#required-properties)
+- [Qt Quick Layouts Documentation](https://doc.qt.io/qt-6/qtquicklayouts-index.html)
+- [Animation and Transitions](https://doc.qt.io/qt-6/qtquick-statesanimations-animations.html)
+- [Qt Quick Controls Documentation](https://doc.qt.io/qt-6/qtquickcontrols-index.html)
+- [Qt Quick Effects](https://doc.qt.io/qt-6/qtquick-effects-topic.html)
 - [Qt Academy](https://qt.io/academy)
-- [Qt Blog](https://www.qt.io/blog)
 - [Qt Forum](https://forum.qt.io)
 
-Happy coding, and enjoy your journey with Qt!
+## Next Steps
+
+### Continue Learning
+
+After completing this challenge, we encourage you to continue your learning journey with more courses at Qt Academy. The skills you've developed here in creating dynamic, data-driven interfaces using the Model-View-Delegate pattern will provide a solid foundation for building more complex applications.
+
+### Share Your Work
+
+We strongly encourage you to **share your project** with the Qt community! Posting your work helps you receive valuable feedback, showcase your progress, and inspire others who are on the same learning path.
+
+To share your project:
+
+- Post in the [Qt Forum's Model View Delegate challenge thread](https://forum.qt.io/category/73/qt-courses)
+- Include **screenshots** or GIFs of your graphic equalizer in action
+- Consider creating a short **video demonstration** showing the dynamic nature of your equalizer
+- Share a **link to your repository** so others can see your implementation
+- Describe any challenges you faced and how you overcame them
+- Mention which stretch goals you tackled and how you approached them
+
+Engaging with the community is a fantastic way to improve your skills and connect with other Qt developers around the world.
+
+Happy coding!
