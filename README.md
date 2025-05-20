@@ -1,117 +1,175 @@
-# QML for Beginners Coding Challenges
+# QML Debugging with Qt Creator Challenge
 
-Welcome to the QML for Beginners Coding Challenges repository! This collection of hands-on projects is designed to help you apply and solidify the knowledge gained from introductory QML courses at Qt Academy. Each challenge provides an opportunity to practice fundamental QML skills and concepts in a practical, engaging way.
+Welcome to the **QML Debugging with Qt Creator Challenge**! This challenge is designed to help you apply and test the skills you've gained from completing the QML Debugging with Qt Creator course. By working through this practical exercise, you'll solidify your understanding of **debugging techniques** and gain confidence in finding and fixing issues in QML applications.
 
 ## Introduction
 
-Learning programming concepts is most effective when theory is combined with practice. These challenges serve as a bridge between learning and application, allowing you to:
+The QML Debugger is a powerful tool that allows you to inspect the state of your QML application at runtime. You can use it to step through code, examine variables, and track down the source of errors. With the debugger, you can recreate the conditions under which problems occur, and then analyze your application's behavior to identify what's going wrong.
 
-- Reinforce your understanding of Qt and QML concepts
-- Build confidence in applying what you've learned
-- Develop problem-solving skills within the Qt framework
-- Create functional applications that demonstrate your capabilities
+Knowing how the QML Debugger works, its features, views, and capabilities is only as valuable as your ability to apply that knowledge. As someone once said, "you can learn about driving a car and pass the test, but it isn't until you start driving for real that you actually begin to learn how to drive."
 
-Each challenge includes:
+This challenge provides a practical exercise to help you become familiar with the QML debugger's operation and move beyond theoretical knowledge to practical competence.
 
-- A starting project template with necessary resources
-- Detailed requirements and guidance
-- Optional stretch goals for additional learning
-- A solution project demonstrating one possible implementation
+## Challenge Brief
 
-## Repository Structure
+Imagine that you have successfully developed and launched a software product - a **virtual guitar pedal** - similar to the one you may have encountered in the Intro to Qt Quick course.
 
-This repository is organized with a branch for each challenge:
+One day, you receive a customer report indicating that they're experiencing issues with the software. This is where your debugging skills come into play. Your task is to utilize the QML Debugger to investigate the reported problems, identify the root causes, and implement the necessary fixes.
 
-- The **main** branch (this one) contains an overview of all challenges
-- Each **challenge branch** contains:
-  - A detailed README with challenge requirements
-  - A `StartingProject` folder with template code
-  - A `SolutionProject` folder with a sample implementation
+## Requirements
 
-To try a challenge, simply check out the corresponding branch and follow the instructions in its README.
+### Original Application Requirements
 
-## Challenges Overview
+The virtual guitar pedal was designed with the following requirements:
 
-### Available Challenges
+- Three dials for **Time**, **Level**, and **Feedback** parameters where the dials rotate clockwise to increase the value and anti-clockwise to decrease
+  - The dials should intuitively respond to rotational input handling
+- The main **foot switch** turns the virtual guitar pedal on or off and should show the pedal being pressed or not, as well as a "Standby/On LED" reflecting the same state
+- A **mode switch** can be selected in an up or down position to change the mode of the effect being applied
 
-#### [Introduction to QML Challenge](../../tree/Intro-to-QML)
+### Reported Issues
 
-Create a business card application that displays contact information with an interactive layout that toggles between basic and detailed views. This challenge focuses on fundamental QML concepts including anchors, property bindings, and signal handling.
+The customer has reported the following problems:
 
-#### [Introduction to Qt Quick Challenge](../../tree/Intro-Qt-Quick)
+- The dials don't rotate as expected, behaving erratically
+  - They don't seem to be able to rotate fully clockwise, getting stuck at the "3 o'clock" position
+- Pressing the foot pedal makes the foot pedal image and the LED disappear
+- The mode switch also vanishes when it is clicked
 
-Design and implement a TV remote control application with various interactive buttons and visual feedback. This challenge explores more advanced Qt Quick elements, image resources, custom fonts, and complex UI interactions.
+Your challenge is to use the QML Debugger in Qt Creator to help you find where the problems are and to fix the code to make it behave properly.
 
-#### [Introduction to Qt Quick Controls Challenge](../../tree/Intro-Qt-Quick-Controls)
+## Overview of Starting Project
 
-Build a restaurant menu ordering application using Qt Quick Controls to create a responsive, interactive UI. This challenge demonstrates the use of ApplicationWindow, Pages, and various controls while implementing property bindings for dynamic calculations.
+To help you focus on the debugging process, we've prepared a project that exhibits the reported issues. You can find it in the [StartingProject](./StartingProject/) folder in this repository.
 
-### Coming Soon
+The starting project includes:
 
-More challenges will be released in the future to cover the remaining Qt Academy courses in the QML for Beginners Learning Path.
+- A **CMakeLists.txt** file with main.cpp and Main.qml files, along with image and font resources
+- A virtual guitar pedal application with the reported issues:
+  - Erratic dial rotation that stops at the 3 o'clock position
+  - Disappearing foot pedal and LED when pressed
+  - Vanishing mode switch when clicked
 
-#### Positioners and Layouts Challenge (coming soon)
+The Main.qml file contains the complete application, including:
 
-Learn to effectively arrange UI elements using Qt's powerful positioning and layout systems.
+- A **Window** with fixed size properties
+- **FontLoaders** for specialized text rendering
+- A **background image** of the red pedal
+- **ScrewImage** instances in each corner
+- Two text components: **DeviceText** and **InfoText**
+- A **SwitchImage** component that changes its source based on state
+- A **DeviceSwitch** component extending SwitchImage with text
+- **Mode Switch** and **FootSwitch** instances
+- A **DeviceDial** component with rotational behavior
+  - Used for the Time, Level, and Feedback controls
 
-#### Model View Delegate with QML Challenge (coming soon)
+## Debugging Approach
 
-Explore data presentation and manipulation using Qt's Model-View-Delegate architecture in QML.
+To successfully complete this challenge, you'll need to use several QML debugging techniques:
 
-#### QML Best Practice Challenge (coming soon)
+1. **Setting breakpoints** at key locations in the code:
 
-Apply best practices and design patterns to create maintainable, efficient QML applications.
+   - In signal handlers (e.g., onTapped, onCentroidChanged)
+   - In property bindings like the Image source property
+   - With conditions to target specific scenarios
 
-#### QML Fluid Elements and Animations Challenge (coming soon)
+2. **Using expression evaluators** to inspect:
 
-Explore fluid UI design and animations by using states, transitions, and animations in QML.
+   - Variable values like file URLs
+   - Property values for components
+   - Complex expressions to test fixes
 
-#### QML Debugging Basics with Qt Creator Challenge (coming soon)
+3. **Stepping through code** with:
 
-Learn the core tools and debugging techniques in Qt Creator to efficiently identify and resolve issues in QML applications.
+   - Step Into (to examine function internals)
+   - Step Over (to execute a line and move to the next)
+   - Step Out (to complete the current function)
+   - Run To Line (to jump to a specific point)
 
-## Getting Started
+4. **Analyzing errors** in the application output
 
-These challenges are designed to complement the QML for Beginners Learning Path on Qt Academy. For the best learning experience:
+   - Looking for patterns in error messages
+   - Tracing errors back to their source
 
-1. **Follow the Learning Path**: Enrol to the [QML for Beginners Learning Path](https://www.qt.io/academy/course-catalog#qml-for-beginners) on Qt Academy.
+5. **Testing fixes** incrementally:
+   - Making one change at a time
+   - Restarting the debugger to apply changes
+   - Verifying each fix addresses the issue
 
-2. **Complete each course**: Work through each course in the learning path to build your QML knowledge step by step.
+By methodically applying these techniques, you can identify and fix all the reported issues in the virtual guitar pedal application.
 
-3. **Take the challenge**: After completing a course, enroll in the corresponding challenge on Qt Academy. Watch the challenge video, review the requirements, and then come to this repository and attempt the corresponding challenge to apply what you've learned.
+## Overview of Solution
 
-4. **Switch to the challenge branch** you want to work on:
+The solution approach for this challenge involves using the QML debugger to locate and fix three specific issues. A fixed version is provided in the [SolutionProject](./SolutionProject/) folder as a reference.
 
-   ```
-   git clone https://github.com/qt-learning/QML-for-Beginners-Challenges.git
-   git checkout Intro-to-QML
-   ```
+The key issues identified and fixed are:
 
-5. **Read the README.md** in that branch for detailed instructions.
+1. **Dial rotation direction**:
 
-6. **Open the StartingProject** in Qt Creator and begin working on the challenge.
+   - Setting a breakpoint in the DragHandler's onCentroidChanged signal handler
+   - Stepping into the updateValueAndRotation() function
+   - Discovering a sign error in the angle calculation
+   - Removing an incorrect negative sign
 
-7. **Reference the solution if needed**: If you get stuck, refer to the SolutionProject for guidance, but try to solve the challenge on your own first!
+2. **Dial rotation range limitation**:
 
-This approach of learning concepts and then immediately applying them through challenges will help cement your understanding and build practical skills.
+   - Creating a conditional breakpoint for when dial.value equals 100
+   - Examining the startAngle and endAngle values
+   - Finding that endAngle is set to 90 degrees (3 o'clock) instead of 140 degrees (5 o'clock)
+   - Correcting the endAngle constant to allow full rotation
 
-## Prerequisites
+3. **Disappearing switch images**:
+   - Setting a conditional breakpoint on the SwitchImage source binding
+   - Examining the filename pattern in the expression evaluator
+   - Noticing that the checked image filenames include a hyphen before "Checked"
+   - Fixing the string template to add the missing hyphen
 
-To complete these challenges, you should:
+The debugging process demonstrates how to systematically isolate and fix issues using the QML debugger's various features.
 
-- Have Qt and Qt Creator installed on your system (All challenge templates and solutions in this series have been built and tested using **Qt 6.8.1**)
-- Complete the corresponding Qt Academy course for each challenge
-- Have basic familiarity with the concepts covered in those courses which you can gain by completing the corresponding course on Qt Academy
+The solution code is thoroughly commented to help you understand the approach and techniques used. The solution only demonstrates the basic solution and not the stretch goals.
 
-## Share Your Work
+## Stretch Goals
 
-We encourage you to share your completed challenges with the Qt community! Post your projects in the [Qt Forum's QML for Beginners section](https://forum.qt.io/category/73/qt-courses) to receive feedback, showcase your work, and inspire other beginners.
+Once you've completed the basic challenge, you can extend your debugging skills with these additional goals:
 
-## Additional Resources
+- Practice **setting and hitting breakpoints** and commit the debugger stepping operations' keyboard shortcuts to memory
+- Add breakpoints for **function calls** and practice the difference between "step in", "step over", "step out", and "run to line"
+- Create **conditional breakpoints** for specific scenarios (e.g., when a dial value exceeds 75)
+- Make the dials deliberately rotate in the **opposite direction** and check values in the expression evaluator
+- Add **expression evaluators** that are not just properties but JavaScript expressions
+  - For example, evaluate entire string templates to test different conditions
+- Explore additional debugging operations, such as **attaching the debugger** to an already running application
+- **Read the documentation** to fully familiarize yourself with all features and shortcuts
 
-- [Qt Documentation](https://doc.qt.io)
+## Useful Resources
+
+- [Qt Creator Debugging QML](https://doc.qt.io/qtcreator/creator-debugging-qml.html)
+- [QML Debugging and Profiling](https://doc.qt.io/qt-6/qtquick-debugging.html)
+- [Qt Creator Debug Mode](https://doc.qt.io/qtcreator/creator-debug-mode.html)
+- [Setting Breakpoints](https://doc.qt.io/qtcreator/creator-breakpoints-view.html)
+- [Using Expressions for Debugging](https://doc.qt.io/qtcreator/creator-expressions-view.html)
+- [Qt Quick Examples](https://doc.qt.io/qt-6/qtquick-codesamples.html)
 - [Qt Academy](https://qt.io/academy)
-- [Qt Blog](https://www.qt.io/blog)
 - [Qt Forum](https://forum.qt.io)
 
-Happy coding, and enjoy your journey with Qt!
+## Next Steps
+
+### Continue Learning
+
+After completing this challenge, we encourage you to continue your learning journey with more courses at Qt Academy. The debugging skills you've developed here will prove invaluable as you build more complex applications and need to troubleshoot issues efficiently.
+
+### Share Your Work
+
+We strongly encourage you to **share your debugging experience** with the Qt community! Sharing your process helps others learn and may provide you with additional insights.
+
+To share your experience:
+
+- Post in the [Qt Forum's QML Debugging challenge thread](https://forum.qt.io/category/73/qt-courses)
+- Describe the debugging techniques that you found most useful
+- Share any alternative approaches you discovered for finding the issues
+- Discuss any challenges you faced and how you overcame them
+- Mention which stretch goals you tackled and what you learned from them
+
+Remember that debugging is an essential skill for any developer, and sharing your experiences can help both you and other developers improve your problem-solving abilities.
+
+Happy debugging!
