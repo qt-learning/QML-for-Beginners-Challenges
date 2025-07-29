@@ -1,117 +1,148 @@
-# QML for Beginners Coding Challenges
+# QML Best Practice Challenge
 
-Welcome to the QML for Beginners Coding Challenges repository! This collection of hands-on projects is designed to help you apply and solidify the knowledge gained from introductory QML courses at Qt Academy. Each challenge provides an opportunity to practice fundamental QML skills and concepts in a practical, engaging way.
+Welcome to the **QML Best Practice Challenge**! This challenge will help you apply and test the skills you've gained from completing the QML Best Practice course. By working through this practical exercise, you'll solidify your understanding of **writing high-quality QML code** and develop habits that will make your applications more robust and maintainable.
 
 ## Introduction
 
-Learning programming concepts is most effective when theory is combined with practice. These challenges serve as a bridge between learning and application, allowing you to:
+This challenge is not so much about exercising your ability to use certain APIs, Layouts, or Controls, but rather an opportunity to test your ability to **write the best QML** - the language and glue that ties all those things together and brings your applications to life.
 
-- Reinforce your understanding of Qt and QML concepts
-- Build confidence in applying what you've learned
-- Develop problem-solving skills within the Qt framework
-- Create functional applications that demonstrate your capabilities
+QML is a very dynamic and flexible language, and there are many ways you can unknowingly (or in some cases sadly knowingly) abuse what is afforded for precise crafting of your amazing project. This challenge reinforces the recommendations and principles explained in the course to ensure that you know how to make your code as **robust and maintainable** as possible.
 
-Each challenge includes:
+## Challenge Brief
 
-- A starting project template with necessary resources
-- Detailed requirements and guidance
-- Optional stretch goals for additional learning
-- A solution project demonstrating one possible implementation
+Imagine that you have successfully developed and launched a software product - a **virtual guitar pedal** - similar to the one you may have encountered in the Intro to Qt Quick course.
 
-## Repository Structure
+One day, you receive a customer report indicating that they're experiencing issues with the software. This is where your debugging skills come into play. Your task is to utilize the QML Debugger to investigate the reported problems, identify the root causes, and implement the necessary fixes.
 
-This repository is organized with a branch for each challenge:
+## Requirements
 
-- The **main** branch (this one) contains an overview of all challenges
-- Each **challenge branch** contains:
-  - A detailed README with challenge requirements
-  - A `StartingProject` folder with template code
-  - A `SolutionProject` folder with a sample implementation
+The specific improvements you need to make are organized into the same sections as the QML Best Practice course. Each fix is small but will make a big difference to code quality:
 
-To try a challenge, simply check out the corresponding branch and follow the instructions in its README.
+### QML Language Features: Use Strong Typing (3 issues)
 
-## Challenges Overview
+- **Use Strongly Typed Properties** by choosing better types for any `var` properties in the code
+- **Use Declarative Bindings Rather Than Imperative Assignments** by refactoring JavaScript functions and assignments into declarative bindings
+  - For example, see if you can remove the `updateDrawerDimensions()` function in Main.qml completely
+- **Use Typed List Properties** by ensuring any list properties are declared to contain the correct types only
 
-### Available Challenges
+### QML Language Features: Required Properties, and More (4 issues)
 
-#### [Introduction to QML Challenge](../../tree/Intro-to-QML)
+- **Use [Required Properties](https://doc.qt.io/qt-6/qtqml-syntax-objectattributes.html#required-properties) in Components and Delegates** by updating unqualified uses of "model" with correctly typed required properties
+- **Don't Use ids if You Don't Need Them** by removing any ids on components bound to properties that could be replaced from outside
+- **Assign meaningful objectNames** to your QML objects where needed - particularly delegates in a View using string interpolation to create unique objectNames
+- **Use [String Interpolation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)** in chapter texts to use template literals (backticks) instead of double quotes and replace string concatenations with string templates
 
-Create a business card application that displays contact information with an interactive layout that toggles between basic and detailed views. This challenge focuses on fundamental QML concepts including anchors, property bindings, and signal handling.
+### QML Language Features: Signals, States, and More
 
-#### [Introduction to Qt Quick Challenge](../../tree/Intro-Qt-Quick)
+- **Use Explicit URL Resolution** in any URL properties which should be using [`Qt.resolvedUrl()`](https://doc.qt.io/qt-6/qml-qtqml-qt.html#resolvedUrl-method)
+- **Use [Group Property Syntax](https://doc.qt.io/qt-6/qtqml-syntax-objectattributes.html#grouped-properties)** for properties that could be better expressed this way
+- **[Connections Function Syntax](https://doc.qt.io/qt-6/qml-qtqml-connections.html#function-syntax)** should be used instead of signal handlers when possible
+- **Prefer UI Interaction Signals Over Changed Signals** by refactoring signal handlers to use UI interaction signals instead of visual property change signals
 
-Design and implement a TV remote control application with various interactive buttons and visual feedback. This challenge explores more advanced Qt Quick elements, image resources, custom fonts, and complex UI interactions.
+### QML Language Features: Styling and Properties
 
-#### [Introduction to Qt Quick Controls Challenge](../../tree/Intro-Qt-Quick-Controls)
+- **Use Compile-Time Style Selection** by appending a named style any time you import [QtQuick.Controls](https://doc.qt.io/qt-6/qtquickcontrols-styles.html#compile-time-style-selection)
+- **Avoid Shadowing Properties** by fixing the Chapter header to make its properties FINAL to remove property shadowing potential
 
-Build a restaurant menu ordering application using Qt Quick Controls to create a responsive, interactive UI. This challenge demonstrates the use of ApplicationWindow, Pages, and various controls while implementing property bindings for dynamic calculations.
+### Unqualified Access
 
-### Coming Soon
+- **Avoid Implicit Lookup in the Root Scope** by adding correct id qualifications on properties in child items which bind to properties of the QML document
+- **Avoid Referencing Objects Outside the Component** by fixing external access to the drawer inside the SettingsButton where its id is not available by emitting a signal for handling externally
+- **Avoid Using parent for Property Qualification** by using a qualified id rather than using "parent" in property binding expressions other than anchors
 
-More challenges will be released in the future to cover the remaining Qt Academy courses in the QML for Beginners Learning Path.
+### QML and JavaScript
 
-#### Positioners and Layouts Challenge (coming soon)
+- **Use [Type Annotations on Functions](https://doc.qt.io/qt-6/qtqml-javascript-hostenvironment.html#type-annotations-and-assertions)** which don't specify any types for their parameters or return values
 
-Learn to effectively arrange UI elements using Qt's powerful positioning and layout systems.
+## Overview of Starting Project
 
-#### Model View Delegate with QML Challenge (coming soon)
+To help you focus on the debugging process, we've prepared a project that exhibits the reported issues. You can find it in the [StartingProject](./StartingProject/) folder in this repository.
 
-Explore data presentation and manipulation using Qt's Model-View-Delegate architecture in QML.
+The starting project includes:
 
-#### QML Best Practice Challenge (coming soon)
+The starting project includes:
 
-Apply best practices and design patterns to create maintainable, efficient QML applications.
+- A **CMakeLists.txt** file with main.cpp and QML files, a C++ class, and image resources
+- A **target property** `QT_QML_CACHEGEN_ARGUMENTS "--verbose"` which tells the QML compiler to be more verbose, allowing us to see more warnings
+- **Main.qml** with an ApplicationWindow containing:
+  - Header with SettingsButton, title Label, Font Size Slider, and Dark Mode Switch
+  - Footer with Previous/Next buttons and Page Indicator
+  - SwipeView containing BookPage delegates for each chapter
+  - Drawer with duplicate controls
+- **Theme.qml** - A QML Singleton for styling
+- **Book.qml** and **GreatNightIn.qml** - Components for book data
+- **BookPage.qml** - Page delegate for displaying chapters
+- Various control components with best practice violations
 
-#### QML Fluid Elements and Animations Challenge (coming soon)
+The application builds and runs successfully but generates many warnings that need to be addressed.
 
-Explore fluid UI design and animations by using states, transitions, and animations in QML.
+## Overview of Solution
 
-#### QML Debugging Basics with Qt Creator Challenge (coming soon)
+A corrected version is provided in the [SolutionProject](./SolutionProject/) folder that demonstrates all the fixes applied. The solution maintains the same functionality and visual appearance while addressing all QML best practice violations.
 
-Learn the core tools and debugging techniques in Qt Creator to efficiently identify and resolve issues in QML applications.
+Key improvements made include:
 
-## Getting Started
+- **Strong typing**: Converting `var` properties to specific types, replacing imperative assignments with declarative bindings, and properly typing list properties
+- **Required properties**: Adding required properties to delegates, removing unnecessary ids, adding meaningful objectNames, and using string interpolation
+- **Signal handling**: Using explicit URL resolution, group property syntax, Connections function syntax, and UI interaction signals
+- **Compile-time optimizations**: Using explicit style imports and adding FINAL keywords to C++ properties
+- **Qualified access**: Properly qualifying property access, using signals instead of external references, and avoiding parent qualification
+- **Type annotations**: Adding type information to JavaScript functions
 
-These challenges are designed to complement the QML for Beginners Learning Path on Qt Academy. For the best learning experience:
+**Proof of improvement**: The AOT (Ahead-of-Time) compilation statistics show the dramatic improvement:
 
-1. **Follow the Learning Path**: Enrol to the [QML for Beginners Learning Path](https://www.qt.io/academy/course-catalog#qml-for-beginners) on Qt Academy.
+- **Starting Project**: 18 of 58 bindings compiled successfully (31.03%)
+- **Solution Project**: 59 of 59 bindings compiled successfully (100%)
 
-2. **Complete each course**: Work through each course in the learning path to build your QML knowledge step by step.
+The solution code is thoroughly commented to help you understand the approach and techniques used. The solution only demonstrates the basic solution and not the stretch goals.
 
-3. **Take the challenge**: After completing a course, enroll in the corresponding challenge on Qt Academy. Watch the challenge video, review the requirements, and then come to this repository and attempt the corresponding challenge to apply what you've learned.
+## Stretch Goals
 
-4. **Switch to the challenge branch** you want to work on:
+Once you've completed the basic challenge, you can extend the application with a new feature while applying best practices:
 
-   ```
-   git clone https://github.com/qt-learning/QML-for-Beginners-Challenges.git
-   git checkout Intro-to-QML
-   ```
+**Add a Chapter Selection Feature to the Drawer:**
 
-5. **Read the README.md** in that branch for detailed instructions.
+- Add a [ColumnLayout](https://doc.qt.io/qt-6/qml-qtquick-layouts-columnlayout.html) to the Drawer to hold vertically arranged Buttons - one for each chapter in the Book
+- Use a [Repeater](https://doc.qt.io/qt-6/qml-qtquick-repeater.html) to create the Buttons using the Book's chapters list property as the model
+- Ensure each Button is the same width using appropriate [Layout attached properties](https://doc.qt.io/qt-6/qml-qtquick-layouts-layout.html)
+- Alternatively, use a [ListView](https://doc.qt.io/qt-6/qml-qtquick-listview.html) if you prefer scrolling capability
+- Set the Button's font to one of the Theme fonts
+- Ensure the Button changes its palette colors with the Light/Dark Mode switch
+  - Hint: Add new palette color roles to Theme.qml and use them in the ApplicationWindow's palette bindings
+- Bind the relevant Button properties to **required properties** from the model
+- When the button is clicked, make the SwipeView change its index based on the Button's index
+- Highlight the button to indicate the current chapter based on the SwipeView's currentIndex
+- Add a **breakpoint** on your Button's onClicked handler to inspect its index and verify SwipeView updates
 
-6. **Open the StartingProject** in Qt Creator and begin working on the challenge.
+## Useful Resources
 
-7. **Reference the solution if needed**: If you get stuck, refer to the SolutionProject for guidance, but try to solve the challenge on your own first!
-
-This approach of learning concepts and then immediately applying them through challenges will help cement your understanding and build practical skills.
-
-## Prerequisites
-
-To complete these challenges, you should:
-
-- Have Qt and Qt Creator installed on your system (All challenge templates and solutions in this series have been built and tested using **Qt 6.8.1**)
-- Complete the corresponding Qt Academy course for each challenge
-- Have basic familiarity with the concepts covered in those courses which you can gain by completing the corresponding course on Qt Academy
-
-## Share Your Work
-
-We encourage you to share your completed challenges with the Qt community! Post your projects in the [Qt Forum's QML for Beginners section](https://forum.qt.io/category/73/qt-courses) to receive feedback, showcase your work, and inspire other beginners.
-
-## Additional Resources
-
-- [Qt Documentation](https://doc.qt.io)
+- [Qt Creator Debugging QML](https://doc.qt.io/qtcreator/creator-debugging-qml.html)
+- [QML Debugging and Profiling](https://doc.qt.io/qt-6/qtquick-debugging.html)
+- [Qt Creator Debug Mode](https://doc.qt.io/qtcreator/creator-debug-mode.html)
+- [Setting Breakpoints](https://doc.qt.io/qtcreator/creator-breakpoints-view.html)
+- [Using Expressions for Debugging](https://doc.qt.io/qtcreator/creator-expressions-view.html)
+- [Qt Quick Examples](https://doc.qt.io/qt-6/qtquick-codesamples.html)
 - [Qt Academy](https://qt.io/academy)
-- [Qt Blog](https://www.qt.io/blog)
 - [Qt Forum](https://forum.qt.io)
 
-Happy coding, and enjoy your journey with Qt!
+## Next Steps
+
+### Continue Learning
+
+After completing this challenge, we encourage you to continue your learning journey with more courses at Qt Academy. Reflecting on your entire journey helps solidify your learning and inspire others who are just beginning.
+
+### Share Your Work
+
+We strongly encourage you to **share your experience** with the Qt community! Sharing your process helps others learn and may provide you with additional insights.
+
+To share your experience:
+
+- Post in the [Qt Forum's QML Debugging challenge thread](https://forum.qt.io/category/73/qt-courses)
+- Describe the debugging techniques that you found most useful
+- Share any alternative approaches you discovered for finding the issues
+- Discuss any challenges you faced and how you overcame them
+- Mention which stretch goals you tackled and what you learned from them
+
+Remember that debugging is an essential skill for any developer, and sharing your experiences can help both you and other developers improve your problem-solving abilities.
+
+Happy debugging!
