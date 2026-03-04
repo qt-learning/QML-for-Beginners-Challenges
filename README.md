@@ -133,4 +133,4 @@ This software package may provide links or access to third party libraries or co
 
 - The [Kalam Typeface](SolutionProject/fonts/Kalam-Regular.ttf) was created by the [Indian Type Foundry](https://www.indiantypefoundry.com/) and is licensed under the [SIL Open Font License](/LICENSES/OFL.txt).
 
-- `curry.jpg` provided in this challenge is a photo by [Andy Hay](https://unsplash.com/@eastcoastkitchen) on [Unsplash](https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-ZN-TT10kf4o) and is licensed under the [Unsplash License](https://unsplash.com/license).
+- `curry.jpg` provided in [SolutionProject](SolutionProject/images/curry.jpg) is a photo by [Andy Hay](https://unsplash.com/@eastcoastkitchen) on [Unsplash](https://unsplash.com/photos/cooked-food-on-stainless-steel-bowl-ZN-TT10kf4o) and is licensed under the [Unsplash License](https://unsplash.com/license).
