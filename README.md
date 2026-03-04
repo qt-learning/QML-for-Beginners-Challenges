@@ -23,14 +23,12 @@ Your graphic equalizer display should show moving levels (based on a Timer and r
 The requirements for this challenge can be broken down into three main components:
 
 1. **LED Element**:
-
    - Design a small, LED-style element to serve as the individual visual unit within an LED bar
    - Each LED should have a customizable **threshold** at which it turns on and off
    - The LED's **color** could change as the level increases
    - Keep it simple as hundreds of these elements may be created in the final display
 
 2. **LED Bar**:
-
    - Create a container for multiple LED elements
    - Determine its **orientation** (either vertical or horizontal)
    - Choose the desired **number of LEDs** it will contain
@@ -62,7 +60,6 @@ The starting project doesn't come with any additional resources, but you should 
 A sample solution is provided in the [SolutionProject](./SolutionProject/) folder that demonstrates one approach to meeting the challenge requirements. This solution shows:
 
 - A hierarchical structure of components that build upon each other:
-
   - **LED.qml**: A simple Rectangle with properties for threshold and volumeLevel
   - **LEDBar.qml**: A ColumnLayout that uses a Repeater to create multiple LEDs
   - **LEDMeter.qml**: A horizontal ListView that arranges multiple LEDBars
@@ -134,3 +131,18 @@ To share your project:
 Engaging with the community is a fantastic way to improve your skills and connect with other Qt developers around the world.
 
 Happy coding!
+
+## Licensing Information
+
+```
+Copyright (C) 2026 Qt Group.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+```
+
+This code repository contains code samples and other materials designed to help you learn and practice QML development. The materials provided are intended for educational purposes to help test the skills you've gained from completing the Intro to QML course.
+
+### Terms and Conditions
+
+If you, your employer, or the legal entity you act on behalf of hold commercial license(s) with a Qt Group entity, this software package constitutes Pre-Release Code under the Qt License/Frame Agreement governing those licenses, and that agreement's terms and conditions govern your access and use of this software package.
+
+This software package may provide links or access to third party libraries or code (collectively "Third-Party Software") to implement various functions. Use or distribution of Third-Party Software is discretionary and in all respects subject to applicable license terms of applicable third-party right holders.
