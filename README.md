@@ -138,3 +138,24 @@ To share your project:
 Engaging with the community is a fantastic way to improve your skills and connect with other Qt developers around the world.
 
 Happy coding!
+
+## Licensing Information
+
+```
+Copyright (C) 2026 Qt Group.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+```
+
+This code repository contains code samples and other materials designed to help you learn and practice QML development. The materials provided are intended for educational purposes to help test your understanding of **animations, states, and transitions** in QML and gain confidence in creating dynamic, engaging user interfaces.
+
+### Terms and Conditions
+
+If you, your employer, or the legal entity you act on behalf of hold commercial license(s) with a Qt Group entity, this software package constitutes Pre-Release Code under the Qt License/Frame Agreement governing those licenses, and that agreement's terms and conditions govern your access and use of this software package.
+
+This software package may provide links or access to third party libraries or code (collectively "Third-Party Software") to implement various functions. Use or distribution of Third-Party Software is discretionary and in all respects subject to applicable license terms of applicable third-party right holders.
+
+### Third-Party Attributions
+
+- The icons used in this project are sourced from [Material Symbols Library](https://fonts.google.com/icons) provided by Google. The icons are available under the [Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+- `wallpaper.jpg` provided in both the StartingProject and SolutionProject is a photo by [Annie Spratt](https://unsplash.com/@anniespratt) on [Unsplash](https://unsplash.com/photos/black-textile-in-close-up-photography-gM8igOIP5MA) and is licensed under the [Unsplash License](https://unsplash.com/license).
