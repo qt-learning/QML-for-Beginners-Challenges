@@ -68,26 +68,22 @@ The Main.qml file contains the complete application, including:
 To successfully complete this challenge, you'll need to use several QML debugging techniques:
 
 1. **Setting breakpoints** at key locations in the code:
-
    - In signal handlers (e.g., onTapped, onCentroidChanged)
    - In property bindings like the Image source property
    - With conditions to target specific scenarios
 
 2. **Using expression evaluators** to inspect:
-
    - Variable values like file URLs
    - Property values for components
    - Complex expressions to test fixes
 
 3. **Stepping through code** with:
-
    - Step Into (to examine function internals)
    - Step Over (to execute a line and move to the next)
    - Step Out (to complete the current function)
    - Run To Line (to jump to a specific point)
 
 4. **Analyzing errors** in the application output
-
    - Looking for patterns in error messages
    - Tracing errors back to their source
 
@@ -105,14 +101,12 @@ The solution approach for this challenge involves using the QML debugger to loca
 The key issues identified and fixed are:
 
 1. **Dial rotation direction**:
-
    - Setting a breakpoint in the DragHandler's onCentroidChanged signal handler
    - Stepping into the updateValueAndRotation() function
    - Discovering a sign error in the angle calculation
    - Removing an incorrect negative sign
 
 2. **Dial rotation range limitation**:
-
    - Creating a conditional breakpoint for when dial.value equals 100
    - Examining the startAngle and endAngle values
    - Finding that endAngle is set to 90 degrees (3 o'clock) instead of 140 degrees (5 o'clock)
@@ -173,3 +167,30 @@ To share your experience:
 Remember that debugging is an essential skill for any developer, and sharing your experiences can help both you and other developers improve your problem-solving abilities.
 
 Happy debugging!
+
+## Licensing Information
+
+```
+Copyright (C) 2026 Qt Group.
+SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+```
+
+This code repository contains code samples and other materials designed to help you learn and practice QML development. The materials provided are intended for educational purposes to help test your understanding of **debugging techniques** and gain confidence in finding and fixing issues in QML applications.
+
+### Terms and Conditions
+
+If you, your employer, or the legal entity you act on behalf of hold commercial license(s) with a Qt Group entity, this software package constitutes Pre-Release Code under the Qt License/Frame Agreement governing those licenses, and that agreement's terms and conditions govern your access and use of this software package.
+
+This software package may provide links or access to third party libraries or code (collectively "Third-Party Software") to implement various functions. Use or distribution of Third-Party Software is discretionary and in all respects subject to applicable license terms of applicable third-party right holders.
+
+### Third-Party Attributions
+
+#### Fonts
+
+- The [Prisma](/00-Assets/fonts/Prisma.ttf) font was created by [Dieter Steffman](http://www.steffmann.de/) and originally designed by Rudolf Koch for the type foundry Klingspor Brothers (Offenbach/M.), 1932. It was downloaded from [DaFont](https://www.dafont.com/prisma.font) and is licensed under attribution to the original creator, Dieter Steffman.
+
+- The [RussoOne](/00-Assets/fonts/RussoOne-Regular.ttf) font was created by [Ivan Gladkikh](https://typetype.org/) and is licensed under the [SIL Open Font License](/LICENSES/OFL.txt).
+
+#### Images
+
+- The images used in this project are sourced and adapted from [Dzianis Rakhuba](https://stock.adobe.com) / stock.adobe.com
